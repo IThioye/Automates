@@ -1,0 +1,66 @@
+{
+    "liste_encoding": [
+        "utf-8",
+        "UTF-16",
+        "MacRoman",
+        "SHIFT_JIS",
+        "CP932"
+    ],
+    "fournisseurs_code": [
+        {
+            "value": "401",
+            "selected": true
+        }
+    ],
+    "clients_code": [
+        {
+            "value": "411",
+            "selected": true
+        }
+    ],
+    "journal_codes_achats": [
+        {
+            "value": "AC",
+            "selected": true
+        },
+        {
+            "value": "HA",
+            "selected": true
+        },
+        {
+            "value": "A10",
+            "selected": true
+        },
+        {
+            "value": "60",
+            "selected": true
+        },
+        {
+            "value": "ACH",
+            "selected": true
+        }
+    ],
+    "journal_codes_ventes": [
+        {
+            "value": "VE",
+            "selected": true
+        },
+        {
+            "value": "VT",
+            "selected": true
+        },
+        {
+            "value": "VTE",
+            "selected": true
+        },
+        {
+            "value": "70",
+            "selected": true
+        },
+        {
+            "value": "VEN",
+            "selected": true
+        }
+    ],
+    "taux_cmc" : ["0%","2.1%","5.5%","8.5%","10%","20%"]
+}

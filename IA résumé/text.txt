@@ -1,0 +1,40 @@
+# Build the react app
+cd frontend && npm run build
+
+# Backend deployment
+gcloud run deploy clarity-agent-service \
+  --source ./backend \
+  --region europe-west9 \
+  --allow-unauthenticated \
+  --project raghackathon \
+  --set-secrets="BDD_API_KEY=bdd_api_key:latest,SCHEDULER_TOKEN=clarity-scheduler-token:latest" \
+  --update-env-vars="GCP_PROJECT_ID=raghackathon,GCP_REGION=europe-west9,AZURE_API_BASE_URL=https://proxy-clarity.gentleocean-eb3ee6eb.westus2.azurecontainerapps.io/api"
+
+# Frontend deployment
+gcloud run deploy clarity-frontend-service \
+  --source ./frontend \
+  --region europe-west9 \
+  --allow-unauthenticated \
+  --project raghackathon \
+  --update-env-vars="GCP_AGENT_URL=https://clarity-agent-service-72900764523.europe-west9.run.app,GCP_AGENT_WS_URL=wss://clarity-agent-service-72900764523.europe-west9.run.app"
+
+
+
+# new version
+
+gcloud run deploy clarity-agent-service-v2 \
+  --source ./backend \
+  --region europe-west9 \
+  --allow-unauthenticated \
+  --project raghackathon \
+  --set-secrets="BDD_API_KEY=bdd_api_key:latest,SCHEDULER_TOKEN=clarity-scheduler-token:latest" \
+  --update-env-vars="GCP_PROJECT_ID=raghackathon,GCP_REGION=europe-west9,AZURE_API_BASE_URL=https://proxy-clarity.gentleocean-eb3ee6eb.westus2.azurecontainerapps.io/api"
+
+
+
+gcloud run deploy clarity-frontend-service-v2 \
+  --source ./frontend \
+  --region europe-west9 \
+  --allow-unauthenticated \
+  --project raghackathon \
+  --set-env-vars=GCP_AGENT_URL=https://clarity-agent-service-v2-72900764523.europe-west9.run.app,GCP_AGENT_WS_URL=wss://clarity-agent-service-v2-72900764523.europe-west9.run.app,NEXT_PUBLIC_GCP_AGENT_URL=https://clarity-agent-service-v2-72900764523.europe-west9.run.app,NEXT_PUBLIC_AZURE_API_URL=https://proxy-clarity.gentleocean-eb3ee6eb.westus2.azurecontainerapps.io/api
